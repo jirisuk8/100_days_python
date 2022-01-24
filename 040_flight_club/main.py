@@ -1,7 +1,7 @@
 import json
 
 
-def sign_user():
+def sign_new_user():
     first_name = input("Welcome to JS Flight Club.\n"
                        "We find the best flight deals and email you.\n"
                        "What is your first name?\n")
@@ -38,4 +38,4 @@ def sign_user():
         with open("members.json", 'w') as data_file:
             json.dump(data, data_file, indent=4)
 
-sign_user()
+sign_new_user()
