@@ -1,41 +1,35 @@
 import json
+from data_manager import DataManager
+from flight_data import FlightData
 
+registration = input("Type 'Y' in you want to register new user or your login email please.\n")
 
-def sign_new_user():
-    first_name = input("Welcome to JS Flight Club.\n"
-                       "We find the best flight deals and email you.\n"
-                       "What is your first name?\n")
-    last_name = input("What is your last name?\n")
-    while True:
-        email = input("What is your email?\n")
-        with open("members.json", 'r') as data_file:
-            data = json.load(data_file)
-            if email not in data:
-                email_check = input("Type your email again please.\n")
-                if email_check == email:
-                    break
-                else:
-                    print("You typed two different emails! Try again!")
+if registration.lower() == "y":
+    new_member = DataManager()
+    new_member.sign_new_user()
+else:
+    with open("members.json", 'r') as data_file:
+        data = json.load(data_file)
+        departure_city = data[registration]["Departure city"]
+        destinations = data[registration]["Destinations"]
+        if registration.lower() in data:
+            user_input = input("Please enter number of destinations you want to add or 'S' in case you want "
+                               "to search best deals to your desired destination!\n")
+            if user_input.isnumeric():
+                for i in range(int(user_input)):
+                    destination = input(f"Your destination #{i+1}:\n")
+                    data[registration]["Destinations"].append(destination)
+                with open("members.json", 'w') as file:
+                    json.dump(data, file, indent=4)
+
+            elif user_input.lower() == 's':
+                flight_data = FlightData(departure_city, destinations)
+
+                flight_data.send_email()
             else:
-                print("Your email is already in database. Try again!")
+                print("Entered input is invalid, please try again!")
+        else:
+            print("Entered input is invalid, please try again!")
 
-    new_data = {
-            email: {
-                "First name": first_name,
-                "Last name": last_name
-            }
-        }
 
-    try:
-        with open("members.json", 'r') as data_file:
-            data = json.load(data_file)
-            print(data)
-    except FileNotFoundError:
-        with open("members.json", 'w') as data_file:
-            json.dump(new_data, data_file, indent=4)
-    else:
-        data.update(new_data)
-        with open("members.json", 'w') as data_file:
-            json.dump(data, data_file, indent=4)
 
-sign_new_user()

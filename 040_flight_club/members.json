@@ -1,18 +1,21 @@
 {
-    "hovno@pro.cz": {
-        "First name": "Karel",
-        "Last name": "Vol"
-    },
-    "nic@seznam.cz": {
-        "First name": "asd",
-        "Last name": "fas"
-    },
     "jirka@email.cz": {
-        "First name": "karel",
-        "Last name": "pavel"
+        "First name": "Jiri",
+        "Last name": "Suk",
+        "Departure city": "Prague",
+        "Destinations": []
     },
-    "jirkakanec@email.com": {
-        "First name": "jirka",
-        "Last name": "kanec"
+    "sarka@email.cz": {
+        "First name": "Sarka",
+        "Last name": "Sukova",
+        "Departure city": "Vienna",
+        "Destinations": [
+            "Rome",
+            "Hovno",
+            "Cairo",
+            "Moscow",
+            "New York",
+            "Beijing"
+        ]
     }
 }
