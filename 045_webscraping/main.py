@@ -24,12 +24,6 @@ print(article_texts[largest_index])
 
 
 
-
-
-
-
-
-
 # ------------------------------- examples of use------------------------- #
 # with open("website.html", "r") as file:
 #     contents = file.read()
