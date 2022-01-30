@@ -32,7 +32,7 @@ for song in songs:
         print(f"{song} could not be find in Spotify and has been skipped.")
 
 # Create a Spotify Playlist and get the Playlist ID
-playlist_name = f"{date} Billboard hot 100:"
+playlist_name = f"{date} Billboard hot 100"
 response = sp.user_playlist_create(
     user=user_id,
     name=playlist_name,
